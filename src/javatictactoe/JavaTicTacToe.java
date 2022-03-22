@@ -1,6 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * JavaTicTacToe Version1.0
+ * Frank Bernal
+ * CIS 084 Java Programming
+ * Input: User square selection
+ * Output: Game display
+ * 22 Mar 2022
  */
 package javatictactoe;
 
