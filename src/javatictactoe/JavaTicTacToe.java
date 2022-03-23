@@ -43,74 +43,60 @@ public class JavaTicTacToe {
         System.out.println ("           Tic Tac Toe           ");
         System.out.printf  ("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n\n");
         
-        // Start loop for multiple games
-        do {
-            // Initialize playAgain
-            playAgain = ' ';
-            // Select starting player
-            // Call whoGoesFirst
-            player = whoGoesFirst();
-            // Print who goes first
-            System.out.printf ("The starting player will use %c's\n\n", player);
+        // Select starting player
+        // Call whoGoesFirst
+        player = whoGoesFirst();
+        // Print who goes first
+        System.out.printf ("The starting player will use %c's\n\n", player);
 
-            // Print instructions
-            System.out.println ("Enter a 1 - 9 to select a square");
+        // Print instructions
+        System.out.println ("Enter a 1 - 9 to select a square");
 
-            // Start loop for gameplay
-            while (squareCounter < 9 && gameWinner != 'X' && gameWinner != 'O') {
-                // Loop goes until squares run out or a winner is determined
-                // Divider
-                System.out.println ("=================================");
-                // Call board
-                displayTicTacToe(board);
-
-                // Prompt for user input
-                System.out.printf ("Player %c, enter a number (1-9): ", player);
-                //Read input from keyboard
-                inputCharacter = stdin.next().charAt(0);
-
-                // Array index is numbered 0-8
-                // Convert inputCharacter from ascii (1-9) to int (0-8)
-                // To select the row and column index for the 3 by 3 array
-                choice = inputCharacter - '1';   // Input is now 0-8
-                // Row will be [0] for (0 1 2) [1] for (3 4 5) [2] for (6 7 8)
-                int row = choice / ROW_TOTAL;
-                // Col will be [0] for (0 3 6) [1] (1 4 7) [2] for (2 5 8)
-                int col = choice % COL_TOTAL;
-
-                // Checking for valid entries and updating array
-                // Player is switched if valid input detected
-                // X to O or O to X
-                player = runInput(choice, row, col, player);
-
-                // Check if there is a winner
-                // Returns X or O if game is won
-                gameWinner = checkForWinningGame(board);
-            }   // End of loop
-
-            // The game is over. Either game was been one or we ran out of squares
-            // Display final board
+        // Start loop for gameplay
+        while (squareCounter < 9 && gameWinner != 'X' && gameWinner != 'O') {
+            // Loop goes until squares run out or a winner is determined
+            // Divider
+            System.out.println ("=================================");
+            // Call board
             displayTicTacToe(board);
-            // Blank line
-            System.out.println();
 
-            // Did anyone win?
-            if (gameWinner == 'X'|| gameWinner == 'O')
-                System.out.printf ("Player %c wins the game!!\n\n", gameWinner);
-            // Nobody won :[
-            else
-                System.out.printf ("There seems to be a tie!\n\n");
-            
-            // Ask to play again
-            while (playAgain != 'Y' && playAgain != 'N') {
-            // Would you like to play again?
-            System.out.printf ("Would you like to play again? [Y] or [N]: ");
-            playAgain = stdin.next().toUpperCase().charAt(0);
-            if (playAgain != 'Y' && playAgain != 'N')
-                System.out.printf ("Invalid entry, please try again\n\n");
-            };   // End of while
-            
-        } while (playAgain != 'Y');
+            // Prompt for user input
+            System.out.printf ("Player %c, enter a number (1-9): ", player);
+            //Read input from keyboard
+            inputCharacter = stdin.next().charAt(0);
+
+            // Array index is numbered 0-8
+            // Convert inputCharacter from ascii (1-9) to int (0-8)
+            // To select the row and column index for the 3 by 3 array
+            choice = inputCharacter - '1';   // Input is now 0-8
+            // Row will be [0] for (0 1 2) [1] for (3 4 5) [2] for (6 7 8)
+            int row = choice / ROW_TOTAL;
+            // Col will be [0] for (0 3 6) [1] (1 4 7) [2] for (2 5 8)
+            int col = choice % COL_TOTAL;
+
+            // Checking for valid entries and updating array
+            // Player is switched if valid input detected
+            // X to O or O to X
+            player = runInput(choice, row, col, player);
+
+            // Check if there is a winner
+            // Returns X or O if game is won
+            gameWinner = checkForWinningGame(board);
+        }   // End of loop
+
+        // The game is over. Either game was been one or we ran out of squares
+        // Display final board
+        displayTicTacToe(board);
+        // Blank line
+        System.out.println();
+
+        // Did anyone win?
+        if (gameWinner == 'X'|| gameWinner == 'O')
+            System.out.printf ("Player %c wins the game!!\n\n", gameWinner);
+        // Nobody won :[
+        else
+            System.out.printf ("There seems to be a tie!\n\n");
+
         // Close the scanner
         stdin.close();
     }   // End of PSV Main
