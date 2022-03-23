@@ -45,6 +45,15 @@ public class JavaTicTacToe {
         
         // Print instructions
         System.out.println ("Enter a 1 - 9 to select a square");
+        
+        // Start loop for gameplay
+        //while (squareCounter < 9 && gameWinner != 'X' && gameWinner != 'O') {
+            // Loop goes until squares run out or a winner is determined
+            // Divider
+            System.out.println ("=================================");
+            // Call board
+            displayTicTacToe(board);
+       // }
     }   // End of PSV Main
     
     // Start whoGoesFirst
@@ -57,4 +66,31 @@ public class JavaTicTacToe {
         else
             return 'O';
     }   // End of whoGoesFirst
+    
+    // Start displayTicTacToe
+    public static void displayTicTacToe(char[][] board) {
+        // Blank line
+        System.out.println();
+        // Print vertical lines above 
+        System.out.println("     |     |     ");
+        
+        // Outer loop for rows
+        for (int row = 0; row < 3; row++) {
+            // Inner loop for cols
+            for (int col = 0; col <3; col++) {
+                // First 2 cols get a vertical line
+                if (col < 2)
+                System.out.printf ("  %c  |", board[row][col]);
+                // Last col does not
+                else
+                    System.out.printf ("  %c  \n", board[row][col]);
+            }   // End of col inner loop
+            // First two rows get a bottom line
+            if (row <2)
+                System.out.println ("-----|-----|-----");
+            // Last one does not
+            else
+                System.out.println ("     |     |     ");
+        }   // End of row outer loop
+    }   // End of displayTicTacToe
 }   // End of JavaTicTacToe
