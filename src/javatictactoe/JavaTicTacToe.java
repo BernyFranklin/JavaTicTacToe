@@ -13,6 +13,9 @@ import java.util.Scanner;
 import java.lang.Math;
 
 public class JavaTicTacToe {
+    // Constants to eliminate magic numbers
+    static final int ROW_TOTAL = 3;   // Max rows is 3 in the array
+    static final int COL_TOTAL = 3;   // Max columns is 3 in the array
     // Declare array for board with 3 rows and 3 cols
     static char[ ][ ] board = {   // Index for positions in array
         {'1', '2', '3'},          // [0][0] [0][1] [0][2]
@@ -47,13 +50,27 @@ public class JavaTicTacToe {
         System.out.println ("Enter a 1 - 9 to select a square");
         
         // Start loop for gameplay
-        //while (squareCounter < 9 && gameWinner != 'X' && gameWinner != 'O') {
+        while (squareCounter < 9 && gameWinner != 'X' && gameWinner != 'O') {
             // Loop goes until squares run out or a winner is determined
             // Divider
             System.out.println ("=================================");
             // Call board
             displayTicTacToe(board);
-       // }
+            
+            // Prompt for user input
+            System.out.printf ("Player %c, enter a numer (1-9)", player);
+            //Read input from keyboard
+            inputCharacter = stdin.next().charAt(0);
+            
+            // Array index is numbered 0-8
+            // Convert inputCharacter from ascii (1-9) to int (0-8)
+            // To select the row and column index for the 3 by 3 array
+            choice = inputCharacter - '1';   // Input is now 0-8
+            // Row will be [0] for (0 1 2) [1] for (3 4 5) [2] for (6 7 8)
+            int row = choice / ROW_TOTAL;
+            // Col will be [0] for (0 3 6) [1] (1 4 7) [2] for (2 5 8)
+            int col = choice / COL_TOTAL;
+        }   // End of loop
     }   // End of PSV Main
     
     // Start whoGoesFirst
@@ -92,5 +109,7 @@ public class JavaTicTacToe {
             else
                 System.out.println ("     |     |     ");
         }   // End of row outer loop
+        // Blank line for formatting
+        System.out.println();
     }   // End of displayTicTacToe
 }   // End of JavaTicTacToe
