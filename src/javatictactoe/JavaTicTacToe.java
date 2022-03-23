@@ -84,7 +84,25 @@ public class JavaTicTacToe {
                 player = 'X';
             
             // Check if there is a winner
+            // Returns X or O if game is won
+            gameWinner = checkForWinningGame(board);
         }   // End of loop
+        
+        // The game is over. Either game was been one or we ran out of squares
+        // Display final board
+        displayTicTacToe(board);
+        // Blank line
+        System.out.println();
+        
+        // Did anyone win?
+        if (gameWinner == 'X'|| gameWinner == 'Y')
+            System.out.printf ("Player %c wins the game!!\n\n", gameWinner);
+        // Nobody won :[
+        else
+            System.out.printf ("There seems to be a tie!\n\n");
+        
+        // Close the scanner
+        stdin.close();
     }   // End of PSV Main
     
     // Start whoGoesFirst
@@ -144,4 +162,11 @@ public class JavaTicTacToe {
             squareCounter++;
         }   // End of Else
     }   // End of runInput
+    
+    // Start of checkForWinningGame
+    public static char checkForWinningGame(char[][] board) {
+        
+        // No Winner
+        return '-';
+    }   // End of checkForWinningGame
 }   // End of JavaTicTacToe
