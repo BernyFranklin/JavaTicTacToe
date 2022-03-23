@@ -19,7 +19,17 @@ public class JavaTicTacToe {
         {'7', '8', '9'}           // [2][0] [2][1] [2][2]
     };
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Local variables for main
+        int squareCounter = 0;   // Keep track # of squares used
+        char gameWinner = '-';   // Winner of hame X or O
+        char inputCharacter;     // Input from user (should be 1-9)
+        int choice;              // Input converted to index 0-8
+        char player;             // Current player set at each turn
+        
+        // Create scanner object
+        Scanner stdin = new Scanner(System.in);
+        
+        
     }   // End of PSV Main
     
 }   // End of JavaTicTacToe
