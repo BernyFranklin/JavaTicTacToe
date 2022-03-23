@@ -10,6 +10,7 @@
 package javatictactoe;
 // Import the scanner
 import java.util.Scanner;
+import java.lang.Math;
 
 public class JavaTicTacToe {
     // Declare array for board with 3 rows and 3 cols
@@ -29,7 +30,18 @@ public class JavaTicTacToe {
         // Create scanner object
         Scanner stdin = new Scanner(System.in);
         
-        
+        // Select starting player
+        // Call whoGoesFirst
+        player = whoGoesFirst();
+        System.out.printf ("The starting player will use %c's\n", player);
     }   // End of PSV Main
     
+    // Start whoGoesFirst
+    public static char whoGoesFirst() {
+        int selectFirstPlayer = (int)(Math.random()*2);
+        if (selectFirstPlayer % 2 == 1)
+            return 'X';
+        else
+            return 'O';
+    }   // End of whoGoesFirst
 }   // End of JavaTicTacToe
