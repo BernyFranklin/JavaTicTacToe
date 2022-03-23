@@ -16,6 +16,10 @@ public class JavaTicTacToe {
     // Constants to eliminate magic numbers
     static final int ROW_TOTAL = 3;   // Max rows is 3 in the array
     static final int COL_TOTAL = 3;   // Max columns is 3 in the array
+    
+    // Global Variables
+    static int squareCounter = 0;   // Keep track # of squares used
+    static char player;             // Current player set at each turn
     // Declare array for board with 3 rows and 3 cols
     static char[ ][ ] board = {   // Index for positions in array
         {'1', '2', '3'},          // [0][0] [0][1] [0][2]
@@ -24,11 +28,9 @@ public class JavaTicTacToe {
     };
     public static void main(String[] args) {
         // Local variables for main
-        int squareCounter = 0;   // Keep track # of squares used
         char gameWinner = '-';   // Winner of hame X or O
         char inputCharacter;     // Input from user (should be 1-9)
         int choice;              // Input converted to index 0-8
-        char player;             // Current player set at each turn
         
         // Create scanner object
         Scanner stdin = new Scanner(System.in);
@@ -58,7 +60,7 @@ public class JavaTicTacToe {
             displayTicTacToe(board);
             
             // Prompt for user input
-            System.out.printf ("Player %c, enter a numer (1-9)", player);
+            System.out.printf ("Player %c, enter a numer (1-9): ", player);
             //Read input from keyboard
             inputCharacter = stdin.next().charAt(0);
             
@@ -69,7 +71,19 @@ public class JavaTicTacToe {
             // Row will be [0] for (0 1 2) [1] for (3 4 5) [2] for (6 7 8)
             int row = choice / ROW_TOTAL;
             // Col will be [0] for (0 3 6) [1] (1 4 7) [2] for (2 5 8)
-            int col = choice / COL_TOTAL;
+            int col = choice % COL_TOTAL;
+            
+            // Checking for valid entries and updating array
+            runInput(choice, row, col, player);
+            // Select next player
+            if (player == 'X')
+                // switch to O if X
+                player = 'O';
+            else
+                // switch to X if O
+                player = 'X';
+            
+            // Check if there is a winner
         }   // End of loop
     }   // End of PSV Main
     
@@ -112,4 +126,22 @@ public class JavaTicTacToe {
         // Blank line for formatting
         System.out.println();
     }   // End of displayTicTacToe
+    
+    // Start of runInput
+    static void runInput(int choice, int row, int col, char player) {
+        // Check if input is between 0-8
+        if (choice < 0 || choice > 8)
+            System.out.printf ("Illegal value, please try again\n\n");
+        // Check if square is already ocupied
+        else if (board[row][col] == 'X' || board[row][col] == 'O')
+            System.out.printf ("This space has already been used, "
+                    + "please try again\n\n");
+        // Enter square input as player selection
+        else {
+            // Enter X or O depending on who's turn it is
+            board[row][col] = player;
+            // Update counter
+            squareCounter++;
+        }   // End of Else
+    }   // End of runInput
 }   // End of JavaTicTacToe
