@@ -30,15 +30,28 @@ public class JavaTicTacToe {
         // Create scanner object
         Scanner stdin = new Scanner(System.in);
         
+        // Welcome message
+        System.out.println ("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+        System.out.println ("             Weclome             ");
+        System.out.println ("               to                ");
+        System.out.println ("           Tic Tac Toe           ");
+        System.out.printf  ("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n\n");
+        
         // Select starting player
         // Call whoGoesFirst
         player = whoGoesFirst();
-        System.out.printf ("The starting player will use %c's\n", player);
+        // Print who goes first
+        System.out.printf ("The starting player will use %c's\n\n", player);
+        
+        // Print instructions
+        System.out.println ("Enter a 1 - 9 to select a square");
     }   // End of PSV Main
     
     // Start whoGoesFirst
     public static char whoGoesFirst() {
+        // Math.random() gives a double between 0.0 and less than 1.0
         int selectFirstPlayer = (int)(Math.random()*2);
+        // If random returns a 1 X goes first, if 0 O goes first
         if (selectFirstPlayer % 2 == 1)
             return 'X';
         else
